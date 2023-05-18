@@ -12,6 +12,7 @@ import Home from "./screens/Home";
 import Saved from "./screens/Saved";
 import Booking from "./screens/Booking";
 import Profile from "./screens/Profile";
+import Search from "./screens/Search";
 
 const { View, Text, StyleSheet } = require("react-native");
 
@@ -78,6 +79,7 @@ const StackNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Main" component={BottomTabs} options={{headerShown: false}} />
+        <Stack.Screen name="Search" component={Search} options={{headerShown: false}} />
       </Stack.Navigator>
     </NavigationContainer>
   );

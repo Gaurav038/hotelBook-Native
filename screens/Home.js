@@ -1,12 +1,13 @@
 import { useNavigation } from "@react-navigation/native"
 import { useLayoutEffect, useState } from "react"
-import { Pressable, ScrollView, StyleSheet, Text, TextInput, View, Button } from "react-native"
-import { FontAwesome } from '@expo/vector-icons';
+import { Pressable, ScrollView, StyleSheet, Text, TextInput, View, Button, Image } from "react-native"
 import { Feather } from "@expo/vector-icons";
 import Header from "../components/Header";
 import DatePicker from "react-native-date-ranges";
 import { Ionicons } from "@expo/vector-icons";
 import { BottomModal, ModalButton, ModalContent, ModalFooter, ModalTitle, SlideAnimation } from "react-native-modals";
+const bigImage = require("../assets/download.png");
+const logoImage = require("../assets/images.jpg");
 
 
 function Home() {
@@ -48,7 +49,10 @@ function Home() {
           height: 110,
         },
         headerRight : () => (
-          <FontAwesome name="hotel" size={24} color="white" style={{ marginRight: 22 }} />
+            <Image 
+              style={{width: 120, height: 40, resizeMode: 'cover', marginRight: 15}}
+              source={logoImage}
+            />        
         )
       })
   },[])
@@ -61,7 +65,7 @@ function Home() {
         <Header />
         <ScrollView>
           <View style={homeStyle.container}>
-              <Pressable style={homeStyle.item} >
+              <Pressable onPress={() => navigation.navigate("Search")} style={homeStyle.item} >
                   <Feather name="search" size={24} color="black" />
                   <TextInput placeholder="enter your destination" />
               </Pressable>
@@ -128,7 +132,12 @@ function Home() {
             </Pressable>
           </ScrollView>
 
-
+          <Pressable style={homeStyle.image}>
+            <Image 
+              style={{width: 280, height: 200, resizeMode: 'cover'}}
+              source={bigImage}
+            />
+          </Pressable>
         </ScrollView>
       </View>
 
@@ -284,6 +293,11 @@ const homeStyle = StyleSheet.create({
     fontSize: 15,
     fontWeight: "bold",
     marginVertical: 3
+  },
+  image: {
+    alignItems: "center",
+    paddingVertical: 20,
+    height: 300
   }
 
 })
